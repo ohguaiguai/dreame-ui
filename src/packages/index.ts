@@ -1,5 +1,3 @@
-// 所有组件的入口
-
 // 使用方式:
 // import dreamerUI from 'dreamer-ui';
 // Vue.use(dreamerUI);
