@@ -3,6 +3,7 @@
 // 使用方式:
 // import dreamerUI from 'dreamer-ui';
 // Vue.use(dreamerUI);
+import { VueConstructor } from 'vue';
 
 import Button from './button/button.vue';
 import ButtonGroup from './button/button-group.vue';
@@ -23,37 +24,37 @@ import Progress from './upload/progress.vue';
 import Carousel from './carousel/carousel.vue';
 import CarouselItem from './carousel/carousel-item.vue';
 
-import infiniteScroll from './infiniteScroll.js';
+import infiniteScroll from './infiniteScroll';
 
-const install = (Vue) => {
-    Vue.component(Button.name, Button);
-    Vue.component(Icon.name, Icon);
-    Vue.component(ButtonGroup.name, ButtonGroup);
-    Vue.component(Row.name, Row);
-    Vue.component(Col.name, Col);
-    Vue.component(Input.name, Input);
-    
-    Vue.component(Container.name, Container);
-    Vue.component(Aside.name, Aside);
-    Vue.component(Main.name, Main);
-    Vue.component(Header.name, Header);
-    Vue.component(Footer.name, Footer);
+const install = (Vue: VueConstructor) => {
+  Vue.component(Button.name, Button);
+  Vue.component(Icon.name, Icon);
+  Vue.component(ButtonGroup.name, ButtonGroup);
+  Vue.component(Row.name, Row);
+  Vue.component(Col.name, Col);
+  Vue.component(Input.name, Input);
 
-    Vue.component(Upload.name, Upload);
-    Vue.component(Progress.name, Progress);
-    
-    Vue.component(Carousel.name, Carousel);
-    Vue.component(CarouselItem.name, CarouselItem);
+  Vue.component(Container.name, Container);
+  Vue.component(Aside.name, Aside);
+  Vue.component(Main.name, Main);
+  Vue.component(Header.name, Header);
+  Vue.component(Footer.name, Footer);
 
-    Vue.directive(infiniteScroll.name, infiniteScroll);
+  Vue.component(Upload.name, Upload);
+  Vue.component(Progress.name, Progress);
 
-}
+  Vue.component(Carousel.name, Carousel);
+  Vue.component(CarouselItem.name, CarouselItem);
+
+  // @ts-ignore
+  Vue.directive(infiniteScroll.name, infiniteScroll);
+};
 
 // 有可能组件会通过script标签引入，<script src="daydreamer-ui"></script>
 // 如果是通过<script src="path/vue"></script> 这种方式引入vue，Vue会被挂载到window上
 if (typeof window.Vue !== 'undefined') {
-    install(Vue);
+  install(window.Vue);
 }
 export default {
-    install
-}
+  install
+};
