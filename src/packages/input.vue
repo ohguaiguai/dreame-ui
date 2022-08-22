@@ -1,33 +1,33 @@
 <template>
   <div class="d-input" :class="inputClass">
-    <d-icon :icon="prefixIcon" v-if="prefixIcon"></d-icon>
+    <d-icon v-if="prefixIcon" :icon="prefixIcon"></d-icon>
 
     <input
+      ref="input"
       :type="showPassword ? (passwordVisible ? 'text' : 'password') : type"
       :name="name"
       :placeholder="placeholder"
       :value="value"
       :disabled="disabled"
-      ref="input"
       @input="$emit('input', $event.target.value)"
     />
     <!-- 注意click事件是用在组件上，默认是给组件绑定一个click事件，这里需要用原生的click事件 -->
     <!-- @mousedown.native.prevent是为了当点击清除icon后input框不失去焦点 -->
     <d-icon
-      icon="clear_circle_outlined"
       v-if="value && clearable"
+      icon="clear_circle_outlined"
       @click.native="$emit('input', '')"
       @mousedown.native.prevent
     ></d-icon>
 
     <!-- 这里需要先失去焦点再获取焦点, 如果还使用@mousedown.native.prevent这个方法的话就会出现光标位置不对的情况 -->
     <d-icon
-      icon="eye"
       v-if="value && showPassword"
+      icon="eye"
       @click.native="changeStatus"
     ></d-icon>
 
-    <d-icon :icon="suffixIcon" v-if="suffixIcon"></d-icon>
+    <d-icon v-if="suffixIcon" :icon="suffixIcon"></d-icon>
   </div>
 </template>
 

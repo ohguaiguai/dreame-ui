@@ -10,13 +10,13 @@
         <slot></slot>
       </div>
       <input
+        ref="input"
         type="file"
         :accept="accept"
         :multiple="multiple"
-        @change="handleChange"
         :name="name"
         class="input"
-        ref="input"
+        @change="handleChange"
       />
     </template>
 

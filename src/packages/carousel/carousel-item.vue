@@ -1,6 +1,6 @@
 <template>
   <transition>
-    <div class="d-carousel-item" v-show="isShow" :class="{ reverse }">
+    <div v-show="isShow" class="d-carousel-item" :class="{ reverse }">
       <slot></slot>
     </div>
   </transition>

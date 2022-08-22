@@ -122,3 +122,9 @@ plugins: ['@babel/plugin-proposal-optional-chaining'];
     node: true
   },
 ```
+
+> pre-commit 和 husky
+
+- 这两个包单独使用
+
+- pre-commit 默认会执行 `npm run test`
