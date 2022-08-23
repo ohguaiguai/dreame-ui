@@ -8,10 +8,10 @@ module.exports = {
     parser: '@typescript-eslint/parser',
     sourceType: 'module'
   },
-  plugins: ['no-loops'],
   extends: ['plugin:vue/recommended', 'prettier'],
+  plugins: ['no-loops', 'prettier'],
   rules: {
-    'no-console': 0,
+    'no-console': 2,
     'no-loops/no-loops': 0,
     'vue/component-definition-name-casing': 0,
     'vue/require-default-prop': 0,

@@ -18,8 +18,8 @@
         <div class="content">3</div>
       </d-carousel-item>
     </d-carousel> -->
-    <ul v-infinite-scroll :infinite-scroll-delay="200">
-      <li v-for="num in 10" :key="num">
+    <ul v-infinite-scroll="loadMore" :infinite-scroll-delay="200">
+      <li v-for="num in list" :key="num">
         {{ num }}
       </li>
     </ul>
@@ -28,13 +28,16 @@
 <script>
 export default {
   data() {
-    return {};
+    return {
+      list: [1, 2, 3, 4, 5]
+    };
   },
   methods: {
-    // change(index) {
-    //   console.log(index);
-    // }
-  },
+    loadMore() {
+      console.log(111);
+      this.list = this.list.concat([1, 2, 3, 4, 5]);
+    }
+  }
 };
 </script>
 <style>

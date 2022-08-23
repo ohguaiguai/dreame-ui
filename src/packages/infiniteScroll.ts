@@ -1,5 +1,5 @@
-import Vue, { VNode } from "vue/types";
-import { DirectiveBinding } from "vue/types/options";
+import Vue, { VNode } from 'vue/types';
+import { DirectiveBinding } from 'vue/types/options';
 
 interface ScrollOptions {
   delay: { default: number };
@@ -10,17 +10,17 @@ interface ScrollOptions {
 
 const attributes = {
   delay: {
-    default: 200,
+    default: 200
   },
   immediate: {
-    default: true,
+    default: true
   },
   disabled: {
-    default: false,
+    default: false
   },
   distance: {
-    default: 10,
-  },
+    default: 10
+  }
 };
 
 type ScrollOptionsMap = {
@@ -29,7 +29,7 @@ type ScrollOptionsMap = {
 };
 type ScrollOptionsArr = [keyof ScrollOptions, { default: any }][];
 
-const scope = "infinite-scroll";
+const scope = 'infinite-scroll';
 
 const getScrollContainer = (el: Element) => {
   // 递归向上查找带有overflow 的元素
@@ -52,7 +52,7 @@ const getScrollOptions = (el: Element) => {
 
   return options.reduce((map, [key, option]) => {
     const defaultValue = option.default;
-    let value = el.getAttribute(`${scope}-${key}`) || "";
+    let value = el.getAttribute(`${scope}-${key}`) || '';
     // value = vm[value] ? vm[value] : defaultValue;
     value = value || defaultValue;
     map[key] = value;
@@ -62,7 +62,7 @@ const getScrollOptions = (el: Element) => {
 
 const throttle = (fn: typeof handleScroll, interval: number) => {
   let canRun = true;
-  return function () {
+  return function() {
     if (!canRun) return;
     canRun = false;
     setTimeout(() => {
@@ -73,7 +73,7 @@ const throttle = (fn: typeof handleScroll, interval: number) => {
   };
 };
 
-const handleScroll = function (this: CustomerElment, cb: any) {
+const handleScroll = function(this: CustomerElment, cb: any) {
   // this就是el
   const { container, el, observer } = this[scope]!;
   const { disabled, distance } = getScrollOptions(el);
@@ -84,7 +84,7 @@ const handleScroll = function (this: CustomerElment, cb: any) {
     (container as Element).scrollTop + (container as Element).clientHeight; // 文档底部的高度
   if ((container as Element).scrollHeight - scrollBottom <= distance) {
     // 当container.scrollHeight和scrollBottom刚好相等时内容已经把可视区域填满了, 但是用户希望多填充distance的内容
-    cb();
+    cb?.();
   } else {
     if (observer) {
       // 当容器填满之后就解除监控
@@ -105,7 +105,7 @@ type CustomerElment = Element & {
 };
 
 export default {
-  name: "infinite-scroll",
+  name: 'infinite-scroll',
   inserted(el: CustomerElment, bindings: DirectiveBinding, vnode: VNode) {
     const cb = bindings.value;
     const vm = vnode.context;
@@ -121,7 +121,7 @@ export default {
         onScroll,
         container,
         el,
-        vm,
+        vm
       };
       if (immediate) {
         const observer = new MutationObserver(onScroll);
@@ -132,11 +132,11 @@ export default {
         }
         observer.observe(container as Element, {
           childList: true, // 监听孩子列表的变化
-          subtree: true, // 当子dom发生变化也触发
+          subtree: true // 当子dom发生变化也触发
         });
         onScroll(); // 默认先加载一次
       }
-      container?.addEventListener("scroll", onScroll);
+      container?.addEventListener('scroll', onScroll);
     }
   },
   unbind(el: CustomerElment) {
@@ -144,9 +144,9 @@ export default {
     if (obj) {
       const { onScroll, container } = obj;
       if (container) {
-        container.removeEventListener("scroll", onScroll);
+        container.removeEventListener('scroll', onScroll);
         el[scope] = null;
       }
     }
-  },
+  }
 };

@@ -125,6 +125,20 @@ plugins: ['@babel/plugin-proposal-optional-chaining'];
 
 > pre-commit 和 husky
 
-- 这两个包单独使用
-
+- 这两个包是单独使用的
 - pre-commit 默认会执行 `npm run test`
+- husky 可以配合 lint-staged 和 commitlint 使用
+
+TODO:
+
+- husky 结合 lint-staged 和 commitlint 配置
+  - prettier 格式化
+  - eslint 校验
+  - commitlint 规范
+- 无限滚动+高性能虚拟列表
+- form 表单
+  - 支持异步校验
+  - 可配置错误级别
+  - 可配置检验方式
+    - 失焦校验
+    - 边输入边校验并可以配置节流时间
