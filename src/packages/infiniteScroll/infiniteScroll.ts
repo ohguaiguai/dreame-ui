@@ -10,17 +10,17 @@ interface ScrollOptions {
 
 const attributes = {
   delay: {
-    default: 200
+    default: 200,
   },
   immediate: {
-    default: true
+    default: true,
   },
   disabled: {
-    default: false
+    default: false,
   },
   distance: {
-    default: 10
-  }
+    default: 10,
+  },
 };
 
 type ScrollOptionsMap = {
@@ -62,7 +62,7 @@ const getScrollOptions = (el: Element) => {
 
 const throttle = (fn: typeof handleScroll, interval: number) => {
   let canRun = true;
-  return function() {
+  return function () {
     if (!canRun) return;
     canRun = false;
     setTimeout(() => {
@@ -73,7 +73,7 @@ const throttle = (fn: typeof handleScroll, interval: number) => {
   };
 };
 
-const handleScroll = function(this: CustomerElment, cb: any) {
+const handleScroll = function (this: CustomerElment, cb: any) {
   // this就是el
   const { container, el, observer } = this[scope]!;
   const { disabled, distance } = getScrollOptions(el);
@@ -121,7 +121,7 @@ export default {
         onScroll,
         container,
         el,
-        vm
+        vm,
       };
       if (immediate) {
         const observer = new MutationObserver(onScroll);
@@ -132,7 +132,7 @@ export default {
         }
         observer.observe(container as Element, {
           childList: true, // 监听孩子列表的变化
-          subtree: true // 当子dom发生变化也触发
+          subtree: true, // 当子dom发生变化也触发
         });
         onScroll(); // 默认先加载一次
       }
@@ -148,5 +148,5 @@ export default {
         el[scope] = null;
       }
     }
-  }
+  },
 };

@@ -41,31 +41,31 @@ export default {
   props: {
     height: {
       type: String,
-      default: '200px'
+      default: '200px',
     },
     autoplay: {
       type: Boolean,
-      default: true
+      default: true,
     },
     delay: {
       type: Number,
-      default: 3000
+      default: 3000,
     },
     initialIndex: {
       type: Number,
-      default: 0
+      default: 0,
     },
     loop: {
       type: Boolean,
-      default: true
-    }
+      default: true,
+    },
   },
   data() {
     // currentSelected
     return {
       currentSelected: this.initialIndex,
       len: 0,
-      reverse: false
+      reverse: false,
     };
   },
   mounted() {
@@ -146,8 +146,8 @@ export default {
           this.select(newIndex);
         }, this.delay);
       }
-    }
-  }
+    },
+  },
 };
 </script>
 

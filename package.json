@@ -12,6 +12,10 @@
     "lint:fix": "eslint ./src --ext .ts,.vue --fix",
     "prepare": "husky install"
   },
+  "lint-staged": {
+    "**/*": "prettier --write --ignore-unknown",
+    "src/**.{js,ts,vue}": "npm run lint"
+  },
   "main": "./dist/dreamer-ui.umd.min.js",
   "dependencies": {
     "core-js": "^3.6.4",
@@ -19,6 +23,8 @@
   },
   "devDependencies": {
     "@babel/plugin-proposal-optional-chaining": "^7.9.0",
+    "@commitlint/cli": "^17.0.3",
+    "@commitlint/config-conventional": "^17.0.3",
     "@koa/multer": "^2.0.2",
     "@koa/router": "^8.0.8",
     "@typescript-eslint/eslint-plugin": "^5.33.1",

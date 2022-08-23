@@ -10,21 +10,21 @@ export default {
   props: {
     span: {
       type: Number,
-      default: 24
+      default: 24,
     },
     offset: {
       type: Number,
-      default: 0
+      default: 0,
     },
     xs: [Number, Object],
     sm: [Number, Object],
     md: [Number, Object],
     lg: [Number, Object],
-    xl: [Number, Object]
+    xl: [Number, Object],
   },
   data() {
     return {
-      gutter: 0 // 不要放在props
+      gutter: 0, // 不要放在props
     };
   },
   computed: {
@@ -51,12 +51,12 @@ export default {
         style = {
           ...style, // 可以保留原有的属性
           paddingLeft: this.gutter / 2 + 'px',
-          paddingRight: this.gutter / 2 + 'px'
+          paddingRight: this.gutter / 2 + 'px',
         };
       }
       return style;
-    }
-  }
+    },
+  },
 };
 </script>
 

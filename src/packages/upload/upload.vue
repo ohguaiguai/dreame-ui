@@ -51,22 +51,22 @@ import uploadDragger from './upload-dragger.vue';
 export default {
   name: 'd-upload',
   components: {
-    uploadDragger
+    uploadDragger,
   },
   props: {
     name: {
       type: String,
-      default: 'file'
+      default: 'file',
     },
     action: {
       type: String,
-      require: true
+      require: true,
     },
     fileList: {
       type: Array,
       default() {
         return [];
-      }
+      },
     },
     accept: String,
     limit: Number,
@@ -81,18 +81,18 @@ export default {
     httpRequest: {
       // 可以是用户传入的请求方法也可以是默认的原生ajax
       type: Function,
-      default: ajax
+      default: ajax,
     },
     drag: {
       type: Boolean,
-      default: false
-    } // 设计一个组件： 1. 用户要有哪些功能？ 2. 需要暴露给用户什么功能？ 3. 用户的行为是什么？
+      default: false,
+    }, // 设计一个组件： 1. 用户要有哪些功能？ 2. 需要暴露给用户什么功能？ 3. 用户的行为是什么？
   },
   data() {
     return {
       reqs: {}, // 请求映射表
       tempIndex: 1,
-      files: [] // 存储要展示的列表, 包括用户已经传入的fileList和后续选择的, 可以删除
+      files: [], // 存储要展示的列表, 包括用户已经传入的fileList和后续选择的, 可以删除
     };
   },
   watch: {
@@ -104,8 +104,8 @@ export default {
           item.status = 'success';
           return item;
         });
-      }
-    }
+      },
+    },
   },
   methods: {
     abort(file) {
@@ -142,7 +142,7 @@ export default {
         size: rawFile.size,
         percentage: 0, //上传的进度
         uid: rawFile.uid,
-        raw: rawFile
+        raw: rawFile,
       };
       this.files.push(file);
       this.onChange && this.onChange(file);
@@ -190,7 +190,7 @@ export default {
           // 失败回调
           // console.log('上传失败', err);
           this.handleError(err, rawFile);
-        }
+        },
       };
       let req = this.httpRequest(options);
       this.reqs[uid] = req;
@@ -228,8 +228,8 @@ export default {
       //    console.log(files);
       // 多个文件如何上传， 多创建几个ajax 一起传
       this.uploadFiles(files);
-    }
-  }
+    },
+  },
 };
 </script>
 

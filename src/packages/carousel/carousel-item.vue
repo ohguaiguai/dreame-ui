@@ -15,14 +15,14 @@ export default {
     );
     return {
       index: children.length - 1, //子组件是一个一个渲染的
-      reverse: false
+      reverse: false,
     };
   },
   computed: {
     isShow() {
       return this.$parent.currentSelected == this.index; // 取父组件的currentSelected
-    }
-  }
+    },
+  },
 };
 </script>
 

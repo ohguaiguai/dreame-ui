@@ -5,10 +5,10 @@ import { VueConstructor } from 'vue';
 
 import Button from './button/button.vue';
 import ButtonGroup from './button/button-group.vue';
-import Icon from './icon.vue';
+import Icon from './icon/icon.vue';
 import Row from './layout/row.vue';
 import Col from './layout/col.vue';
-import Input from './input.vue';
+import Input from './input/input.vue';
 
 import Container from './container/container.vue';
 import Aside from './container/aside.vue';
@@ -54,5 +54,5 @@ if (typeof window.Vue !== 'undefined') {
   install(window.Vue);
 }
 export default {
-  install
+  install,
 };

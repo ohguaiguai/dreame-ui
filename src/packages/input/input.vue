@@ -37,38 +37,38 @@ export default {
   props: {
     name: {
       type: String,
-      default: null
+      default: null,
     },
     type: {
       type: String,
-      default: 'text'
+      default: 'text',
     },
     placeholder: {
       type: String,
-      default: '请输入内容'
+      default: '请输入内容',
     },
     value: {
       type: String,
-      default: ''
+      default: '',
     },
     disabled: {
       type: Boolean,
-      default: false
+      default: false,
     },
     clearable: {
       type: Boolean,
-      default: false
+      default: false,
     },
     showPassword: {
       type: Boolean,
-      default: false
+      default: false,
     },
     prefixIcon: String,
-    suffixIcon: String
+    suffixIcon: String,
   },
   data() {
     return {
-      passwordVisible: false
+      passwordVisible: false,
     };
   },
   computed: {
@@ -81,7 +81,7 @@ export default {
         classes.push(`d-input-prefix-icon`);
       }
       return classes;
-    }
+    },
   },
   methods: {
     changeStatus() {
@@ -90,8 +90,8 @@ export default {
       this.$nextTick(() => {
         this.$refs.input.focus();
       });
-    }
-  }
+    },
+  },
 };
 </script>
 

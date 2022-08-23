@@ -29,15 +29,15 @@
 export default {
   data() {
     return {
-      list: [1, 2, 3, 4, 5]
+      list: [1, 2, 3, 4, 5],
     };
   },
   methods: {
     loadMore() {
       console.log(111);
       this.list = this.list.concat([1, 2, 3, 4, 5]);
-    }
-  }
+    },
+  },
 };
 </script>
 <style>

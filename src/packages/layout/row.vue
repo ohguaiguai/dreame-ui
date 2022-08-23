@@ -10,7 +10,7 @@ export default {
   props: {
     gutter: {
       type: Number,
-      default: 0
+      default: 0,
     },
     justify: {
       type: String,
@@ -30,8 +30,8 @@ export default {
           );
         }
         return true;
-      }
-    }
+      },
+    },
   },
   computed: {
     rowStyl() {
@@ -40,7 +40,7 @@ export default {
         style = {
           ...style,
           marginLeft: -this.gutter / 2 + 'px', // 通过外层margin来消除内部盒子的padding, 相当于外层row的宽度多了gutter，这种情况会有滚动条,实际用的时候我们可以给row外层再套一个盒子，设置overflow: hidden;
-          marginRight: -this.gutter / 2 + 'px'
+          marginRight: -this.gutter / 2 + 'px',
         };
       }
       if (this.justify) {
@@ -49,18 +49,18 @@ export default {
           : this.justify;
         style = {
           ...style,
-          justifyContent: key
+          justifyContent: key,
         };
       }
       return style;
-    }
+    },
   },
   mounted() {
     this.$children.forEach((child) => {
       // 拿到每一子组件col的实例对象
       child.gutter = this.gutter; // 给组件传递gutter
     });
-  }
+  },
 };
 </script>
 
