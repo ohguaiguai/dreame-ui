@@ -6,7 +6,11 @@
     "allowJs": true,
     "moduleResolution": "node",
     "noImplicitThis": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["src/*"]
+    }
   },
   "include": ["src/**/*.ts", "src/**/*.vue"],
   "exclude": ["node_modules"],

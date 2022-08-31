@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import '../styles/icon';
+import './icon';
 export default {
   name: 'd-icon',
   props: {

@@ -24,28 +24,35 @@ import CarouselItem from './carousel/carousel-item.vue';
 
 import infiniteScroll from './infiniteScroll';
 
+const components = [
+  Button,
+  ButtonGroup,
+  Icon,
+  Row,
+  Col,
+  Input,
+  Container,
+  Aside,
+  Main,
+  Header,
+  Footer,
+  Upload,
+  Progress,
+  Carousel,
+  CarouselItem,
+];
+
+const directives = [infiniteScroll];
+
 const install = (Vue: VueConstructor) => {
-  Vue.component(Button.name, Button);
-  Vue.component(Icon.name, Icon);
-  Vue.component(ButtonGroup.name, ButtonGroup);
-  Vue.component(Row.name, Row);
-  Vue.component(Col.name, Col);
-  Vue.component(Input.name, Input);
+  components.forEach((component) => {
+    Vue.component(component.name, component);
+  });
 
-  Vue.component(Container.name, Container);
-  Vue.component(Aside.name, Aside);
-  Vue.component(Main.name, Main);
-  Vue.component(Header.name, Header);
-  Vue.component(Footer.name, Footer);
-
-  Vue.component(Upload.name, Upload);
-  Vue.component(Progress.name, Progress);
-
-  Vue.component(Carousel.name, Carousel);
-  Vue.component(CarouselItem.name, CarouselItem);
-
-  // @ts-ignore
-  Vue.directive(infiniteScroll.name, infiniteScroll);
+  directives.forEach((directive) => {
+    // @ts-ignore
+    Vue.directive(infiniteScroll.name, infiniteScroll);
+  });
 };
 
 // 有可能组件会通过script标签引入，<script src="daydreamer-ui"></script>
@@ -55,4 +62,6 @@ if (typeof window.Vue !== 'undefined') {
 }
 export default {
   install,
+  ...components,
+  infiniteScroll,
 };

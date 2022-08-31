@@ -84,7 +84,7 @@ resolvePlugins (inlinePlugins, useBuiltIn) {
 
 - 需要安装 `typescript`
 
-> 关于 `@babel/preset-typescript` 和 `ts-loader`
+##### 关于 `@babel/preset-typescript` 和 `ts-loader`
 
 vue-cli 默认使用的是 ts-loader 作为处理 ts 和 tsx 的工具，ts-loader 的问题就是在进行生产环境打包，也就是 npm run build 的时候会非常慢，一个解决办法就是用 @babel/preset-typescript 来替换 ts-loader。@babel/preset-typescript 这个预设其实只包含一个插件 @babel/plugin-transform-typescript，它的作用就是把代码中所有的 typescript 语法全部去掉，所以打包非常快。
 
@@ -101,7 +101,7 @@ chainWebpack: config => {
 
 然后我们需要安装 @babel/preset-typescript，并在 babel.config.js 中配置即可。
 
-> 支持可选链式操作符
+##### 支持可选链式操作符
 
 ```js
 npm i @babel/plugin-proposal-optional-chaining -D
@@ -113,7 +113,7 @@ npm i @babel/plugin-proposal-optional-chaining -D
 plugins: ['@babel/plugin-proposal-optional-chaining'];
 ```
 
-> 消除 `babel.config.js` `.eslintrc.js` 中的 `'module' is not defined.`
+##### 消除 `babel.config.js` `.eslintrc.js` 中的 `'module' is not defined.`
 
 在 .eslintrc.js 中配置
 
@@ -123,20 +123,27 @@ plugins: ['@babel/plugin-proposal-optional-chaining'];
   },
 ```
 
-> pre-commit 和 husky
+##### pre-commit 和 husky
 
 - 这两个包是单独使用的
 - pre-commit 默认会执行 `npm run test`
 - husky 可以配合 lint-staged 和 commitlint 使用
 
-TODO:
+##### Vue.extend & Vue.component
 
-- husky 结合 lint-staged 和 commitlint 配置
+Vue.extend 使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
+Vue.extend 相当于一个扩展实例构造器，用于创建一个具有初始化选项的 Vue 子类，在实例化时可以进行扩展选项，最后使用$mount 方法绑定在元素上。
+
+使用 Vue.extend 可以方便的定义组件的类型, **但是无法全局注册**
+
+##### TODO:
+
+- [x] husky 结合 lint-staged 和 commitlint 配置
   - prettier 格式化
   - eslint 校验
   - commitlint 规范
-- 无限滚动+高性能虚拟列表
-- form 表单
+- [ ] 无限滚动+高性能虚拟列表
+- [ ] form 表单
   - 支持异步校验
   - 可配置错误级别
   - 可配置检验方式

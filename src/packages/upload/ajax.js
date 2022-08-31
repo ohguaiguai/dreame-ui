@@ -5,6 +5,7 @@
  * 3. 发送请求 send
  * 4. 回调处理
  **/
+
 export default function ajax(options) {
   const xhr = new XMLHttpRequest();
   const action = options.action;
