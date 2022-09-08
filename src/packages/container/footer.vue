@@ -1,17 +1,17 @@
 <template>
-  <footer class="d-footer">
+  <footer class="dm-footer">
     <slot></slot>
   </footer>
 </template>
 
 <script>
 export default {
-  name: 'd-footer',
+  name: 'dm-footer',
 };
 </script>
 
 <style lang="scss">
-.d-footer {
+.dm-footer {
   height: 60px;
 }
 </style>

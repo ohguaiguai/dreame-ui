@@ -1,5 +1,5 @@
 <template>
-  <svg class="d-icon" aria-hidden="true">
+  <svg class="dm-icon" aria-hidden="true">
     <use :xlink:href="`#icon-${icon}`" />
   </svg>
 </template>
@@ -7,7 +7,7 @@
 <script>
 import './icon';
 export default {
-  name: 'd-icon',
+  name: 'dm-icon',
   props: {
     icon: {
       type: String,
@@ -18,7 +18,7 @@ export default {
 </script>
 
 <style lang="scss">
-.d-icon {
+.dm-icon {
   width: 25px;
   height: 25px;
   vertical-align: middle;

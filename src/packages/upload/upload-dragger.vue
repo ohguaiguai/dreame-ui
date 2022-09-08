@@ -1,11 +1,11 @@
 <template>
   <div
-    class="d-upload-dragger"
+    class="dm-upload-dragger"
     @drop.prevent="onDrop"
     @dragover.prevent
     @dragleave.prevent
   >
-    <d-icon icon="UploadtoCloud" class="icon"></d-icon>
+    <dm-icon icon="UploadtoCloud" class="icon"></dm-icon>
     <span>将文件拖拽到此区域即可</span>
   </div>
 </template>
@@ -31,7 +31,7 @@ export default {
 </script>
 
 <style lang="scss">
-.d-upload-dragger {
+.dm-upload-dragger {
   background: #eee;
   border: 1px solid #aaa;
   border-radius: 10px;

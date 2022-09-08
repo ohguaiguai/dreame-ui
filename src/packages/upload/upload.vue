@@ -1,12 +1,12 @@
 <template>
-  <div class="d-upload">
+  <div class="dm-upload">
     <uploadDragger
       v-if="drag"
       :accept="accept"
       @file="uploadFiles"
     ></uploadDragger>
     <template v-else>
-      <div class="d-upload-btn" @click="handleClick">
+      <div class="dm-upload-btn" @click="handleClick">
         <slot></slot>
       </div>
       <input
@@ -27,17 +27,17 @@
     <ul>
       <li v-for="file in files" :key="file.uid">
         <div class="list-item">
-          <d-icon icon="content"></d-icon>
+          <dm-icon icon="content"></dm-icon>
           {{ file.name }}
-          <d-progress
+          <dm-progress
             v-if="file.status === 'uploading'"
             :percentage="file.percentage"
-          ></d-progress>
+          ></dm-progress>
           {{ file.status }}
-          <d-icon
+          <dm-icon
             icon="clear_circle_outlined"
             @click.native="removeFile(file)"
-          ></d-icon>
+          ></dm-icon>
         </div>
       </li>
     </ul>
@@ -49,7 +49,7 @@ import ajax from './ajax';
 import uploadDragger from './upload-dragger.vue';
 
 export default {
-  name: 'd-upload',
+  name: 'dm-upload',
   components: {
     uploadDragger,
   },
@@ -234,8 +234,8 @@ export default {
 </script>
 
 <style lang="scss">
-.d-upload {
-  .d-upload-btn {
+.dm-upload {
+  .dm-upload-btn {
     display: inline-block;
   }
   .input {

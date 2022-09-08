@@ -1,8 +1,8 @@
 <template>
-  <d-container>
-    <d-header>header</d-header>
+  <dm-container>
+    <dm-header>header</dm-header>
     <div class="shadow"></div>
-    <d-main>
+    <dm-main>
       ` vue logo Vue.js 学习 生态系统 团队 资源列表 支持 Vue 多语言 参与翻译
       特别赞助商 DCloud 稀土掘金技术社区 教程 2.x 基础 安装 介绍 Vue 实例
       模板语法 计算属性和侦听器 Class 与 Style 绑定 条件渲染 列表渲染 事件处理
@@ -101,9 +101,9 @@
       console.log(binding.value.color) // => "white"
       console.log(binding.value.text) // => "hello!" }) ← 混入渲染函数 & JSX →
       发现错误？想参与编辑？ 在 GitHub 上编辑此页！ `
-    </d-main>
-    <d-footer>footer</d-footer>
-  </d-container>
+    </dm-main>
+    <dm-footer>footer</dm-footer>
+  </dm-container>
 </template>
 
 <script>

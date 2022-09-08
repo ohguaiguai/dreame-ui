@@ -1,17 +1,17 @@
 <template>
-  <main class="d-main">
+  <main class="dm-main">
     <slot></slot>
   </main>
 </template>
 
 <script>
 export default {
-  name: 'd-main',
+  name: 'dm-main',
 };
 </script>
 
 <style lang="scss">
-.d-main {
+.dm-main {
   flex: 1;
   padding: 20px;
 }

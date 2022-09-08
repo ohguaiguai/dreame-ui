@@ -2,7 +2,9 @@
   <Test />
 </template>
 <script>
-import Test from '@/packages/carousel/test.vue';
+import Test from '@/element-test.vue';
+console.log(111, 'Test', Test);
+
 export default {
   components: {
     Test,

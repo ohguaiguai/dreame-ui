@@ -1,6 +1,3 @@
-// 使用方式:
-// import dreamerUI from 'dreamer-ui';
-// Vue.use(dreamerUI);
 import { VueConstructor } from 'vue';
 
 import Button from './button/button.vue';
@@ -22,6 +19,8 @@ import Progress from './upload/progress.vue';
 import Carousel from './carousel/carousel.vue';
 import CarouselItem from './carousel/carousel-item.vue';
 
+import Form from './form/form.vue';
+
 import infiniteScroll from './infiniteScroll';
 
 const components = [
@@ -40,6 +39,7 @@ const components = [
   Progress,
   Carousel,
   CarouselItem,
+  Form,
 ];
 
 const directives = [infiniteScroll];

@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'd-progress',
+  name: 'dm-progress',
   props: {
     strokeWidth: {
       type: Number,

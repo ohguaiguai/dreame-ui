@@ -9,10 +9,9 @@ module.exports = {
     sourceType: 'module',
   },
   extends: ['plugin:vue/recommended', 'prettier'],
-  plugins: ['no-loops', 'prettier'],
+  plugins: ['prettier'],
   rules: {
     'no-console': 0,
-    'no-loops/no-loops': 0,
     'vue/component-definition-name-casing': 0,
     'vue/require-default-prop': 0,
     'vue/this-in-template': 0,

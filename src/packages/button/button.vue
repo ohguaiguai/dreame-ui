@@ -1,12 +1,12 @@
 <template>
   <button
-    class="d-button"
+    class="dm-button"
     :class="btnClass"
     :disabled="loading"
     @click="$emit('click', $event)"
   >
-    <d-icon v-if="icon && !loading" :icon="icon" class="icon"></d-icon>
-    <d-icon v-if="loading" icon="loading" class="icon"></d-icon>
+    <dm-icon v-if="icon && !loading" :icon="icon" class="icon"></dm-icon>
+    <dm-icon v-if="loading" icon="loading" class="icon"></dm-icon>
     <!--有可能不写文案-->
     <span v-if="this.$slots.default">
       <slot></slot>
@@ -16,7 +16,7 @@
 
 <script>
 export default {
-  name: 'd-button',
+  name: 'dm-button',
   props: {
     type: {
       type: String,
@@ -56,10 +56,10 @@ export default {
     btnClass() {
       let classes = [];
       if (this.type) {
-        classes.push(`d-button-${this.type}`);
+        classes.push(`dm-button-${this.type}`);
       }
       if (this.iconPosition) {
-        classes.push(`d-button-${this.iconPosition}`);
+        classes.push(`dm-button-${this.iconPosition}`);
       }
       return classes;
     },
@@ -76,7 +76,7 @@ $border-color: #dcdfe6;
 $background: #ecf5ff;
 $active-color: #3a8ee6;
 
-.d-button {
+.dm-button {
   border-radius: $border-radius;
   border: 1px solid $border-color;
   color: $color;

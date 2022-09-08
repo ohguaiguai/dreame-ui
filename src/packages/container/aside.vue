@@ -1,12 +1,12 @@
 <template>
-  <aside class="d-aside" :style="{ width }">
+  <aside class="dm-aside" :style="{ width }">
     <slot></slot>
   </aside>
 </template>
 
 <script>
 export default {
-  name: 'd-aside',
+  name: 'dm-aside',
   props: {
     width: {
       type: String,

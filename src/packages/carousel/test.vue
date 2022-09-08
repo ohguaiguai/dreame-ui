@@ -1,6 +1,6 @@
 <template>
   <div>
-    <d-carousel
+    <dm-carousel
       height="200px"
       :autoplay="true"
       :delay="2000"
@@ -8,16 +8,16 @@
       :loop="true"
       @change="change"
     >
-      <d-carousel-item>
+      <dm-carousel-item>
         <div class="content">1</div>
-      </d-carousel-item>
-      <d-carousel-item>
+      </dm-carousel-item>
+      <dm-carousel-item>
         <div class="content">2</div>
-      </d-carousel-item>
-      <d-carousel-item>
+      </dm-carousel-item>
+      <dm-carousel-item>
         <div class="content">3</div>
-      </d-carousel-item>
-    </d-carousel>
+      </dm-carousel-item>
+    </dm-carousel>
   </div>
 </template>
 <script>

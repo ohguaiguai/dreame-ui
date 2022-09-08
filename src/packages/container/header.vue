@@ -1,17 +1,17 @@
 <template>
-  <header class="d-header">
+  <header class="dm-header">
     <slot></slot>
   </header>
 </template>
 
 <script>
 export default {
-  name: 'd-header',
+  name: 'dm-header',
 };
 </script>
 
 <style lang="scss">
-.d-header {
+.dm-header {
   height: 60px;
   position: sticky;
   background: #fff;

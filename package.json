@@ -19,6 +19,7 @@
   "main": "./dist/dreamer-ui.umd.min.js",
   "dependencies": {
     "core-js": "^3.6.4",
+    "element-ui": "^2.15.9",
     "vue": "^2.6.11"
   },
   "devDependencies": {

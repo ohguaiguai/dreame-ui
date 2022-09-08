@@ -1,6 +1,6 @@
 <template>
   <div
-    class="d-carousel"
+    class="dm-carousel"
     :style="{ height }"
     @mouseenter="hanleMouseEnter"
     @mouseleave="handleMouseLeave"
@@ -23,21 +23,21 @@
     </div>
 
     <div class="arrow-box">
-      <d-button
+      <dm-button
         icon="icon_paging_left"
         @click="select(currentSelected - 1, true)"
-      ></d-button>
-      <d-button
+      ></dm-button>
+      <dm-button
         icon="icon_paging_right"
         @click="select(currentSelected + 1, true)"
-      ></d-button>
+      ></dm-button>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'd-carousel',
+  name: 'dm-carousel',
   props: {
     height: {
       type: String,
@@ -70,7 +70,7 @@ export default {
   },
   mounted() {
     this.children = this.$children.filter(
-      (child) => child.$options.name == 'd-carousel-item'
+      (child) => child.$options.name == 'dm-carousel-item'
     );
     this.len = this.children.length;
     this.run();
@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style lang="scss">
-.d-carousel {
+.dm-carousel {
   position: relative;
   .viewport {
     width: 100%;

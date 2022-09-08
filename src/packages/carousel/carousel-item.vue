@@ -1,6 +1,6 @@
 <template>
   <transition>
-    <div v-show="isShow" class="d-carousel-item" :class="{ reverse }">
+    <div v-show="isShow" class="dm-carousel-item" :class="{ reverse }">
       <slot></slot>
     </div>
   </transition>
@@ -8,10 +8,10 @@
 
 <script>
 export default {
-  name: 'd-carousel-item',
+  name: 'dm-carousel-item',
   data() {
     let children = this.$parent.$children.filter(
-      (child) => child.$options.name === 'd-carousel-item'
+      (child) => child.$options.name === 'dm-carousel-item'
     );
     return {
       index: children.length - 1, //子组件是一个一个渲染的
@@ -27,7 +27,7 @@ export default {
 </script>
 
 <style lang="scss">
-.d-carousel-item {
+.dm-carousel-item {
   width: 100%;
   height: 100%;
 }

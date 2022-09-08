@@ -1,6 +1,6 @@
 <template>
-  <div class="d-input" :class="inputClass">
-    <d-icon v-if="prefixIcon" :icon="prefixIcon"></d-icon>
+  <div class="dm-input" :class="inputClass">
+    <dm-icon v-if="prefixIcon" :icon="prefixIcon"></dm-icon>
 
     <input
       ref="input"
@@ -13,27 +13,27 @@
     />
     <!-- 注意click事件是用在组件上，默认是给组件绑定一个click事件，这里需要用原生的click事件 -->
     <!-- @mousedown.native.prevent是为了当点击清除icon后input框不失去焦点 -->
-    <d-icon
+    <dm-icon
       v-if="value && clearable"
       icon="clear_circle_outlined"
       @click.native="$emit('input', '')"
       @mousedown.native.prevent
-    ></d-icon>
+    ></dm-icon>
 
     <!-- 这里需要先失去焦点再获取焦点, 如果还使用@mousedown.native.prevent这个方法的话就会出现光标位置不对的情况 -->
-    <d-icon
+    <dm-icon
       v-if="value && showPassword"
       icon="eye"
       @click.native="changeStatus"
-    ></d-icon>
+    ></dm-icon>
 
-    <d-icon v-if="suffixIcon" :icon="suffixIcon"></d-icon>
+    <dm-icon v-if="suffixIcon" :icon="suffixIcon"></dm-icon>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'd-input',
+  name: 'dm-input',
   props: {
     name: {
       type: String,
@@ -75,10 +75,10 @@ export default {
     inputClass() {
       let classes = [];
       if (this.clearable || this.showPassword || this.suffixIcon) {
-        classes.push(`d-input-suffix-icon`);
+        classes.push(`dm-input-suffix-icon`);
       }
       if (this.prefixIcon) {
-        classes.push(`d-input-prefix-icon`);
+        classes.push(`dm-input-prefix-icon`);
       }
       return classes;
     },
@@ -97,7 +97,7 @@ export default {
 
 <style lang="scss">
 @import '@/styles/_var.scss';
-.d-input {
+.dm-input {
   display: inline-flex;
   position: relative;
   input {
@@ -117,11 +117,11 @@ export default {
     }
   }
 }
-.d-input-suffix-icon {
+.dm-input-suffix-icon {
   input {
     padding-right: 25px;
   }
-  .d-icon {
+  .dm-icon {
     position: absolute;
     right: 8px;
     top: 13px;
@@ -130,11 +130,11 @@ export default {
     cursor: pointer;
   }
 }
-.d-input-prefix-icon {
+.dm-input-prefix-icon {
   input {
     padding-left: 25px;
   }
-  .d-icon {
+  .dm-icon {
     position: absolute;
     left: 8px;
     top: 13px;

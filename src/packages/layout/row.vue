@@ -1,12 +1,12 @@
 <template>
-  <div class="d-row" :style="rowStyl">
+  <div class="dm-row" :style="rowStyl">
     <slot></slot>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'd-row',
+  name: 'dm-row',
   props: {
     gutter: {
       type: Number,
@@ -65,7 +65,7 @@ export default {
 </script>
 
 <style lang="scss">
-.d-row {
+.dm-row {
   display: flex;
   flex-wrap: wrap;
 }
