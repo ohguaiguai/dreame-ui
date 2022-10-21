@@ -3,15 +3,22 @@ module.exports = {
   env: {
     node: true,
   },
-  parser: 'vue-eslint-parser',
+  extends: [
+    'eslint:recommended', // 必须要配的
+    'plugin:vue/essential',
+    'plugin:vue/recommended',
+    'prettier', // 使用 prettier 覆盖 eslint-plugin-vue
+  ],
   parserOptions: {
-    parser: '@typescript-eslint/parser',
+    ecmaVersion: 2022,
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
-  extends: ['plugin:vue/recommended', 'prettier'],
-  plugins: ['prettier'],
   rules: {
-    'no-console': 0,
+    'no-unused-vars': 1,
+    'no-debugger': 1,
     'vue/component-definition-name-casing': 0,
     'vue/require-default-prop': 0,
     'vue/this-in-template': 0,

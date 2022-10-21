@@ -2,14 +2,16 @@ const path = require('path');
 
 module.exports = {
   pages: {
-    index: './src/main.ts',
+    index: './src/main.js',
   },
   configureWebpack: {
     resolve: {
-      extensions: ['.ts', '.json', '.vue', '.d.ts'],
       alias: {
-        '@': path.resolve(__dirname, './src'),
+        '@src': path.resolve(__dirname, './src'),
+        '@packages': path.resolve(__dirname, './packages/'),
+        'dream-ui': path.resolve(__dirname, './'),
       },
     },
   },
+  transpileDependencies: ['element-ui'],
 };

@@ -1,0 +1,17 @@
+@import './mixins/mixins';
+@import './common/var';
+
+@include b(tooltip) {
+  @include e(popper) {
+    position: absolute;
+    border-radius: 4px;
+    padding: $--tooltip-padding;
+    z-index: $--index-popper;
+    font-size: $--tooltip-font-size;
+    line-height: 1.2;
+    min-width: 10px;
+    word-wrap: break-word;
+    background: $--tooltip-fill;
+    color: $--tooltip-color;
+  }
+}
