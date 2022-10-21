@@ -1,0 +1,61 @@
+@import './function';
+
+// ========================= BEM =========================
+// https://juejin.cn/post/6844904104792162312
+// B: block E: element M: Modifier
+// !global: css-module 的写法，声明一个全局规则。凡是这样声明的class，都不会被编译成哈希字符串。http://www.ruanyifeng.com/blog/2016/06/css_modules.html
+
+// 构建 block
+@mixin b($block) {
+  $B: $namespace + '-' + $block !global; // dm-table
+
+  // 通过 #{} 插值语句可以在选择器或属性名中使用变量
+  .#{$B} {
+    @content;
+  }
+}
+
+// 构建 element
+// @include b (form-item) {
+//   @include e(label input) {
+//   font-size: 10px;
+//   }
+// }
+// 编译结果:
+// .dm-form-item__label, .dm-form-item__input {
+//   font-size: 10px;
+// }
+
+// & 代表父级
+@mixin e($element) {
+  $E: $element !global;
+  $selector: &;
+  $currentSelector: '';
+
+  @each $unit in $element {
+    $currentSelector: #{$currentSelector + & + $dream-separator + $unit + ','};
+  }
+
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+// 构建 modifier
+@mixin m($modifier) {
+  $currentSelector: '';
+  @each $unit in $modifier {
+    $currentSelector: #{$currentSelector +
+      & +
+      $modifier-separator +
+      $unit +
+      ','};
+  }
+  @at-root {
+    #{$currentSelector} {
+      @content;
+    }
+  }
+}

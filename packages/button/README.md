@@ -1,0 +1,1 @@
+- 指定 button 的类型后，form 表单中的 button 点击后不会触发页面刷新
