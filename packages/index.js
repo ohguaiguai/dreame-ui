@@ -22,7 +22,9 @@ import FormItem from './form/form-item.vue';
 
 import infiniteScroll from './infiniteScroll';
 
-import Tooltip from './tooltip/index';
+import Tooltip from './tooltip';
+import Alert from './alert';
+import Drawer from './drawer';
 
 const components = [
   Button,
@@ -43,6 +45,8 @@ const components = [
   Form,
   FormItem,
   Tooltip,
+  Alert,
+  Drawer,
 ];
 
 const directives = [infiniteScroll];

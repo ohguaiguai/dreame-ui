@@ -2,7 +2,7 @@ const root = window;
 const DEFAULTS = {
   placement: 'bottom',
   boundariesElement: 'viewport', // popper 的边界元素, 一般都默认为窗口
-  modifiers: ['offset', 'applyStyle'],
+  modifiers: ['shift', 'offset', 'preventOverflow', 'flip', 'applyStyle'],
 };
 
 function setStyle(element, styles) {
@@ -66,7 +66,9 @@ function getScrollParent(element) {
 }
 
 function getBoundingClientRect(element) {
+  // getBoundingClientRect width 和 height 包含了 border 和 padding
   const rect = element.getBoundingClientRect();
+
   return {
     left: rect.left,
     top: rect.top,
@@ -154,14 +156,66 @@ function isFunction(functionToCheck) {
 }
 class Popper {
   modifiers = {
+    shift(data) {
+      const placement = data.placement;
+      const basePlacement = placement.split('-')[0];
+      // start || end
+      const shiftVariation = placement.split('-')[1];
+
+      if (shiftVariation) {
+        const reference = data.offsets.reference;
+        const popper = data.offsets.popper;
+
+        const shiftOffsets = {
+          x: {
+            // 左对齐
+            start: { left: reference.left },
+            // 右对齐
+            end: { left: reference.left + reference.width - popper.width },
+          },
+          // TODO: 上对齐 下对齐
+        };
+        const axis =
+          ['bottom', 'top'].indexOf(basePlacement) === -1 ? 'y' : 'x';
+        data.offsets.popper = Object.assign(
+          popper,
+          shiftOffsets[axis][shiftVariation]
+        );
+      }
+
+      return data;
+    },
+    preventOverflow(data) {
+      const popper = data.offsets.popper;
+
+      const check = {
+        left() {
+          let left = popper.left;
+          if (left < data.boundaies.left) {
+            left = Math.max(left, data.boundaies.left);
+          }
+          return { left: left };
+        },
+      };
+      data.offsets.popper = Object.assign(popper, check['left']());
+      return data;
+    },
     offset(data) {
       const offset = this._options.offset || 0;
       const popper = data.offsets.popper;
       popper.top += offset;
       return data;
     },
+    flip(data) {
+      const placement = data.placement.split('-')[0];
+      const variation = data.placement.split('-')[1];
+
+      return data;
+    },
     // arrow() {},
     applyStyle(data) {
+      console.log(111, 'applyStyle data: ', data);
+
       const styles = {
         position: data.offsets.popper.position,
       };
@@ -256,6 +310,7 @@ class Popper {
     );
 
     if (['right', 'left'].indexOf(placement) !== -1) {
+      // TODO:
       console.log(111, '');
     } else {
       // 默认二者上下居中对齐
@@ -263,6 +318,7 @@ class Popper {
         referenceOffsets.left +
         referenceOffsets.width / 2 -
         popperRect.width / 2;
+
       if (placement === 'top') {
         popperOffsets.top = referenceOffsets.top - popperRect.height;
       } else {
@@ -271,9 +327,49 @@ class Popper {
     }
     console.log(111, 'popperOffsets: ', popperOffsets);
 
+    popperOffsets.width = popperRect.width;
+    popperOffsets.height = popperRect.height;
+
     return {
       popper: popperOffsets,
+      reference: referenceOffsets,
     };
+  }
+  /**
+   * 获取 popper 的边界值，这个值取决于 popper 的边界元素。
+   * @param {*} data
+   * @param {*} padding
+   * @param {*} boundariesElement
+   */
+  _getBoundaries(data, padding, boundariesElement) {
+    let boundaies = {};
+    let width, height;
+
+    const body = document.body,
+      html = window.document.documentElement;
+    width = Math.max(
+      body.scrollWidth,
+      body.offsetWidth,
+      html.clientWidth,
+      html.scrollWidth,
+      html.offsetWidth
+    );
+    height = Math.max(
+      body.scrollWidth,
+      body.offsetWidth,
+      html.clientWidth,
+      html.scrollWidth,
+      html.offsetWidth
+    );
+
+    boundaies = {
+      top: 0,
+      right: width,
+      bottom: height,
+      left: 0,
+    };
+
+    return boundaies;
   }
   update() {
     let data = { instance: this, styles: {} };
@@ -281,10 +377,18 @@ class Popper {
     data.placement = this._options.placement;
     data._originalPlacement = this._options.placement;
 
+    // 计算初始位置
     data.offsets = this._getOffsets(
       this._popper,
       this._reference,
       data.placement
+    );
+
+    // 获取 popper 的边界值， 如果出界的话就调整
+    data.boundaies = this._getBoundaries(
+      data,
+      this._options.boundaiesPadding,
+      this._options.boundariesElement
     );
 
     data = this.runModifiers(data, this._options.modifiers);

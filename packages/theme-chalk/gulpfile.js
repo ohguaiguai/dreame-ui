@@ -19,4 +19,8 @@ function compile() {
   );
 }
 
-exports.build = series(compile);
+function copyFont() {
+  return src('./src/fonts/**').pipe(dest('./lib/fonts'));
+}
+
+exports.build = series(compile, copyFont);

@@ -36,6 +36,7 @@
     $currentSelector: #{$currentSelector + & + $dream-separator + $unit + ','};
   }
 
+  // @at-root 提升到最顶层
   @at-root {
     #{$currentSelector} {
       @content;
@@ -55,6 +56,14 @@
   }
   @at-root {
     #{$currentSelector} {
+      @content;
+    }
+  }
+}
+
+@mixin when($state) {
+  @at-root {
+    &.#{$state-prefix + $state} {
       @content;
     }
   }

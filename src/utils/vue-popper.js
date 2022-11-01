@@ -33,6 +33,7 @@ export default {
       if (!popper || !reference) return;
 
       // 动态插入 tooltip, 这个时候还没有对应的位置信息
+      // element 是直接把 popper 插在 body 中了，PopperJS 是支持可以不插在 body 中。
       document.body.appendChild(popper);
       const options = this.popperOptions;
       options.placement = this.placement;

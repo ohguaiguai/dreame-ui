@@ -4,7 +4,11 @@ module.exports = {
   pages: {
     index: './src/main.js',
   },
+  css: {
+    sourceMap: true,
+  },
   configureWebpack: {
+    devtool: 'source-map',
     resolve: {
       alias: {
         '@src': path.resolve(__dirname, './src'),
