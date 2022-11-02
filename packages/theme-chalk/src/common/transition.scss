@@ -1,0 +1,11 @@
+@import 'var';
+
+.dm-fade-in-enter-active,
+.dm-fade-in-leave-active {
+  transition: all 0.3s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+.dm-fade-in-enter,
+.dm-fade-in-leave {
+  opacity: 0;
+}

@@ -12,7 +12,7 @@ import Header from './container/header.vue';
 import Footer from './container/footer.vue';
 
 import Upload from './upload/upload.vue';
-import Progress from './upload/progress.vue';
+// import Progress from './upload/progress.vue';
 
 import Carousel from './carousel/carousel.vue';
 import CarouselItem from './carousel/carousel-item.vue';
@@ -25,6 +25,8 @@ import infiniteScroll from './infiniteScroll';
 import Tooltip from './tooltip';
 import Alert from './alert';
 import Drawer from './drawer';
+import Progress from './progress';
+import Backtop from './backtop';
 
 const components = [
   Button,
@@ -47,6 +49,7 @@ const components = [
   Tooltip,
   Alert,
   Drawer,
+  Backtop,
 ];
 
 const directives = [infiniteScroll];
