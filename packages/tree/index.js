@@ -1,4 +1,4 @@
-import Tree from './src/tree.vue';
+import Tree from './src/tree';
 
 /* istanbul ignore next */
 Tree.install = function (Vue) {

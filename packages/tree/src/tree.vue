@@ -1,11 +1,19 @@
 <template>
-  <div>
-    <dm-tree-node></dm-tree-node>
+  <div class="dm-tree">
+    <!-- 传入的child已经是经过处理过的 -->
+    <dm-tree-node
+      v-for="(child, index) in root.childNodes"
+      :key="index"
+      :node="child"
+    >
+    </dm-tree-node>
   </div>
 </template>
 
 <script>
 import DmTreeNode from './tree-node.vue';
+import TreeStore from './model/tree-store';
+
 export default {
   name: 'DmTree',
 
@@ -14,63 +22,6 @@ export default {
   props: {
     data: {
       type: Array,
-      default: () => [
-        {
-          label: '一级 1',
-          children: [
-            {
-              label: '二级 1-1',
-              children: [
-                {
-                  label: '三级 1-1-1',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          label: '一级 2',
-          children: [
-            {
-              label: '二级 2-1',
-              children: [
-                {
-                  label: '三级 2-1-1',
-                },
-              ],
-            },
-            {
-              label: '二级 2-2',
-              children: [
-                {
-                  label: '三级 2-2-1',
-                },
-              ],
-            },
-          ],
-        },
-        {
-          label: '一级 3',
-          children: [
-            {
-              label: '二级 3-1',
-              children: [
-                {
-                  label: '三级 3-1-1',
-                },
-              ],
-            },
-            {
-              label: '二级 3-2',
-              children: [
-                {
-                  label: '三级 3-2-1',
-                },
-              ],
-            },
-          ],
-        },
-      ],
     },
     emptyText: {
       type: String,
@@ -78,9 +29,25 @@ export default {
         return '数据为空';
       },
     },
+    indent: {
+      type: Number,
+      default: 18,
+    },
   },
   data() {
-    return {};
+    return {
+      root: null,
+    };
+  },
+  created() {
+    this.isTree = true; // 区分嵌套情况
+
+    this.store = new TreeStore({
+      data: this.data,
+    });
+
+    this.root = this.store.root;
+    console.log(111, 'store', this.store);
   },
 };
 </script>

@@ -8,9 +8,8 @@ import '../packages/theme-chalk/lib/index.css';
 Vue.use(dreameUI);
 
 // import ElementUI from 'element-ui';
-// import 'element-ui/lib/theme-chalk/index.css';
+import 'element-ui/packages/theme-chalk/lib/index.css';
 import ElementUI from 'element-ui/src/index.js';
-import 'element-ui/lib/theme-chalk/index.css';
 
 Vue.use(ElementUI);
 

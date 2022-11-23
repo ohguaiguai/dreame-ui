@@ -28,6 +28,8 @@ import Drawer from './drawer';
 import Progress from './progress';
 import Backtop from './backtop';
 
+import DmTree from './tree';
+
 const components = [
   Button,
   ButtonGroup,
@@ -50,6 +52,7 @@ const components = [
   Alert,
   Drawer,
   Backtop,
+  DmTree,
 ];
 
 const directives = [infiniteScroll];

@@ -1,18 +1,17 @@
 <template>
   <div class="test">
     <Test />
-    <!-- <el-test /> -->
+    <el-test />
   </div>
 </template>
 <script>
-// import Test from '@/element-test.vue';
-import Test from '@packages/backtop/test.vue';
+import Test from '@packages/tree/test.vue';
 import ElTest from './element-test.vue';
 
 export default {
   components: {
     Test,
-    // ElTest,
+    ElTest,
   },
 };
 </script>
@@ -29,9 +28,10 @@ body {
 }
 .test {
   width: 100%;
+  height: 100vh;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   & > div {
     flex: 1;
   }
