@@ -1,6 +1,6 @@
 <template>
   <div>
-    <dm-tree :data="data"></dm-tree>
+    <dm-tree :data="data" :default-expand-all="true"></dm-tree>
   </div>
 </template>
 

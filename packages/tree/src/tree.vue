@@ -29,10 +29,13 @@ export default {
         return '数据为空';
       },
     },
+    // 缩进
     indent: {
       type: Number,
       default: 18,
     },
+    // 默认是否展开全部节点
+    defaultExpandAll: Boolean,
   },
   data() {
     return {
@@ -44,6 +47,7 @@ export default {
 
     this.store = new TreeStore({
       data: this.data,
+      defaultExpandAll: this.defaultExpandAll,
     });
 
     this.root = this.store.root;

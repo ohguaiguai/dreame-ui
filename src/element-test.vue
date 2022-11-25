@@ -4,6 +4,8 @@
       :data="data"
       :props="defaultProps"
       @node-click="handleNodeClick"
+      :default-expand-all="true"
+      :draggable="true"
     ></el-tree>
   </div>
 </template>

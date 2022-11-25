@@ -23,9 +23,9 @@
     <!-- children -->
     <dm-collapse-transition>
       <div
-        class="dm-tree-node__children"
         v-if="childNodeRendered"
         v-show="expanded"
+        class="dm-tree-node__children"
       >
         <dm-tree-node
           v-for="child in node.childNodes"
@@ -97,11 +97,14 @@ export default {
     } else {
       this.tree = parent.tree;
     }
+
+    if (this.node.expanded) {
+      this.expanded = true;
+      this.childNodeRendered = true;
+    }
   },
   methods: {
     handleExpandIconClick() {
-      console.log(111, 'this.node', this.node, this.expanded);
-
       if (this.expanded) {
         this.node.collapse();
       } else {

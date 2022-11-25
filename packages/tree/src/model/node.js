@@ -13,6 +13,7 @@ export default class Node {
     this.childNodes = [];
 
     // for...in 会把原型链上的属性也遍历
+    // options: {parent, store, data}
     for (let name in options) {
       // eslint-disable-next-line no-prototype-builtins
       if (options.hasOwnProperty(name)) {
@@ -25,8 +26,16 @@ export default class Node {
       this.level = this.parent.level + 1;
     }
 
+    const store = this.store;
+    console.log(111, 'defaultExpandAll', store.defaultExpandAll);
+
+    if (store.defaultExpandAll) {
+      this.expanded = true;
+    }
+
     this.setData(this.data);
 
+    // 判断是否是叶子节点(没有子节点)
     this.updateLeafState();
   }
 
